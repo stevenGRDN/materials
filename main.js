@@ -154,3 +154,175 @@ function addFocusedDiv(divNum) {
     // })
 
   })
+
+const allPropCbox = document.querySelectorAll('.mat-prop-cbox');
+allPropCbox.forEach(item => {
+  item.addEventListener('click', () =>{
+    let i = 0;
+    allPropCbox.forEach(item => {
+      if(item.checked) {
+        i++;
+      }
+
+      if(i > 0){
+        item.closest('.material-properties').style.width = "100%";
+        item.closest('.material-properties').style.translate = "-50% 0";
+      }
+      else{
+        item.closest('.material-properties').style.width = "80%";
+        item.closest('.material-properties').style.translate = "-50% 0";
+      }
+    });
+
+  })
+})
+
+const allSliderF = document.querySelectorAll('.range-slider-front');
+allSliderF.forEach(item =>{
+  item.style.width = (100 * item.nextElementSibling.value / (item.nextElementSibling.max - item.nextElementSibling.min)) + "%";
+  item.nextElementSibling.addEventListener('input', () =>{
+    item.style.width = (100 * item.nextElementSibling.value / (item.nextElementSibling.max - item.nextElementSibling.min)) + "%";
+  })
+})
+
+const allSliderB = document.querySelectorAll('.range-slider-back');
+allSliderB.forEach(item =>{
+  item.style.width = 100 - (100 * item.nextElementSibling.nextElementSibling.value / (item.nextElementSibling.nextElementSibling.max - item.nextElementSibling.nextElementSibling.min)) + "%";
+  item.nextElementSibling.nextElementSibling.addEventListener('input', () =>{
+    item.style.width = 100 - (100 * item.nextElementSibling.nextElementSibling.value / (item.nextElementSibling.nextElementSibling.max - item.nextElementSibling.nextElementSibling.min)) + "%";
+  })
+})
+
+const allRangeValue = document.querySelectorAll('.mat-val-range-value');
+allRangeValue.forEach(item => {
+  const innerTextVal = item.innerText;
+  item.innerText = item.previousElementSibling.children[2].value + innerTextVal;
+  item.previousElementSibling.children[2].addEventListener('input', () =>{
+    item.innerText = item.previousElementSibling.children[2].value + innerTextVal;
+  })
+})
+
+const propertyDesc = document.querySelector('.material-prop-desc');
+const imgContainer = document.querySelector('.material-image-container');
+const propertyDescHeight = propertyDesc.offsetHeight;
+
+
+let tutorialNum = 0;
+const lArrow = document.querySelector('.mat-desc-arr-l');
+const rArrow = document.querySelector('.mat-desc-arr-r');
+const descTexts = document.querySelectorAll('.mat-desc-text');
+const descImgs = document.querySelectorAll('.mat-desc-img');
+const matImg1 = document.querySelectorAll('.img-1');
+const matImg2 = document.querySelectorAll('.img-2');
+const matImgDef = document.querySelectorAll('.img-def');
+
+matImg1.forEach(item => item.style.opacity = "0");
+matImg2.forEach(item => item.style.opacity = "0");
+
+descImgs.forEach(item => item.style.display = "none");
+descImgs[tutorialNum].style.display = "block";
+
+descTexts.forEach(item => item.style.display = "none");
+descTexts[tutorialNum].style.display = "block";
+
+scrollTutorial();
+function scrollTutorial(){
+  console.log(descTexts.length);
+  lArrow.style.opacity = "0.3";
+
+
+  lArrow.addEventListener('click', () =>{
+    if(tutorialNum > 0){
+      tutorialNum--;
+      // console.log(tutorialNum);
+      descImgs.forEach(item => item.style.display = "none");
+      descImgs[tutorialNum].style.display = "block";
+
+      descTexts.forEach(item => item.style.display = "none");
+      descTexts[tutorialNum].style.display = "block";
+    }
+
+    if(tutorialNum <= 0){
+      lArrow.style.opacity = "0.3";
+    }
+    else if(tutorialNum > 0){
+      lArrow.style.opacity = "1";
+    }
+
+    if(tutorialNum != descTexts.length - 1){
+      rArrow.style.opacity = "1";
+    }
+  })
+
+  rArrow.addEventListener('click', () =>{
+    if(tutorialNum < descTexts.length - 1){
+      tutorialNum++;
+      // console.log(tutorialNum);
+      rArrow.style.opacity = "1";
+      descImgs.forEach(item => item.style.display = "none");
+      descImgs[tutorialNum].style.display = "block";
+
+      descTexts.forEach(item => item.style.display = "none");
+      descTexts[tutorialNum].style.display = "block";
+    }
+
+    if(tutorialNum > 0){
+      lArrow.style.opacity = "1";
+    }
+
+    if(tutorialNum == descTexts.length - 1){
+      rArrow.style.opacity = "0.3";
+    }
+    else if(tutorialNum != descTexts.length - 1){
+      rArrow.style.opacity = "1";
+    }
+  })
+  // console.log("tutorial num" + tutorialNum);
+}
+
+function scrollTutorialIMG(){
+  matImgDef.forEach(item => item.style.opacity = "0");
+  matImg1.forEach(item => item.style.opacity = "0");
+  matImg2.forEach(item => item.style.opacity = "0");
+  matImg1[tutorialNum].style.opacity = "1";
+  matImg2[tutorialNum].style.opacity = "1";
+
+  lArrow.addEventListener('click', () =>{
+      matImg1.forEach(item => item.style.opacity = "0");
+      matImg2.forEach(item => item.style.opacity = "0");
+
+      matImg1[tutorialNum].style.opacity = "1";
+      matImg2[tutorialNum].style.opacity = "1";
+  })
+
+  rArrow.addEventListener('click', () =>{
+      matImg1.forEach(item => item.style.opacity = "0");
+      matImg2.forEach(item => item.style.opacity = "0");
+
+      matImg1[tutorialNum].style.opacity = "1";
+      matImg2[tutorialNum].style.opacity = "1";
+  })
+}
+
+propertyDesc.addEventListener('scroll', () => {
+  console.log((propertyDesc.offsetHeight - propertyDesc.scrollTop) / propertyDesc.offsetHeight);
+  // console.log(propertyDesc.scrollTop / propertyDesc.offsetHeight);
+  setTimeout(() => {
+    if((propertyDesc.offsetHeight - propertyDesc.scrollTop) / propertyDesc.offsetHeight >= 0.35){
+      imgContainer.style.height = "34vh";
+      propertyDesc.style.height = "45.5vh";
+      matImgDef.forEach(item => item.style.opacity = "1");
+      matImg1.forEach(item => item.style.opacity = "0");
+      matImg2.forEach(item => item.style.opacity = "0");
+    }
+    else if((propertyDesc.offsetHeight - propertyDesc.scrollTop) / propertyDesc.offsetHeight <= 0.35){
+      scrollTutorialIMG()
+
+      imgContainer.style.height = "29.5vh";
+      propertyDesc.style.height = "50.5vh";
+
+
+    }
+  }, 500)
+
+});
