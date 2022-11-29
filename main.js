@@ -309,7 +309,7 @@ propertyDesc.addEventListener('scroll', () => {
   // console.log(propertyDesc.scrollTop / propertyDesc.offsetHeight);
   setTimeout(() => {
     if((propertyDesc.offsetHeight - propertyDesc.scrollTop) / propertyDesc.offsetHeight >= 0.35){
-      imgContainer.style.height = "34vh";
+      imgContainer.style.height = "29.5vh";
       propertyDesc.style.height = "45.5vh";
       matImgDef.forEach(item => item.style.opacity = "1");
       matImg1.forEach(item => item.style.opacity = "0");
@@ -321,7 +321,7 @@ propertyDesc.addEventListener('scroll', () => {
       imgContainer.style.height = "29.5vh";
       propertyDesc.style.height = "45.5vh";
         //
-
+        //a
 
     }
   }, 500)
