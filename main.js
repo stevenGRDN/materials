@@ -319,7 +319,7 @@ propertyDesc.addEventListener('scroll', () => {
       scrollTutorialIMG()
 
       imgContainer.style.height = "29.5vh";
-      propertyDesc.style.height = "50.5vh";
+      propertyDesc.style.height = "45.5vh";
 
 
     }
