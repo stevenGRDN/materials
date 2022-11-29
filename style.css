@@ -28,7 +28,7 @@ a{
 .header {
   position: sticky;
   /*content: ' ';*/
-  margin-top: 3vh;
+  margin-top: 5vh;
   margin-bottom: 1.1vh;
   width: 100%;
   height: 4vh;
@@ -890,7 +890,8 @@ a{
 .material-image-container{
   margin-top: 1vh;
   width: 100%;
-  height: 34vh;
+  height: 29.5vh;
+  
   /* background-color: red; */
   position: relative;
   transition: height 0.3s ease-in-out;
