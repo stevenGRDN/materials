@@ -320,6 +320,7 @@ propertyDesc.addEventListener('scroll', () => {
 
       imgContainer.style.height = "29.5vh";
       propertyDesc.style.height = "45.5vh";
+        //
 
 
     }
