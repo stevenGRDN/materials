@@ -2735,6 +2735,7 @@ a{
 
 .home-screen-v2{
   height: 86%;
+  overflow: hidden;
 }
 
 .home-screen-v2 .home-screen-anim{
