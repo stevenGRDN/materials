@@ -707,7 +707,7 @@ window.setInterval(()=>{
     monkeyEarR.classList.add('monkey-ear-r-frames');
     monkeyEarL.classList.add('monkey-ear-l-frames');
   }, 2);
-},10000);
+},10100);
 
 
 // console.log(bruh1);
