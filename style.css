@@ -2197,7 +2197,7 @@ a{
 
 .home-screen-content-container{
   position: absolute;
-  height: 90vh;
+  height: 90%;
   width:100vw;
   margin:0;
   left:0;

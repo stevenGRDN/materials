@@ -13,7 +13,7 @@ allBtn.forEach(btn => {
       btn.closest('.mat-btn').style.backgroundColor = '#000';
     }
     if (btn.checked != true){
-      console.log("bruh");
+      // console.log("bruh");
       btn.closest('.mat-btn').style.backgroundColor = '#fff';
     }
 
@@ -115,7 +115,7 @@ function addFocusedDiv(divNum) {
   window.addEventListener('resize', () =>{
     imgSliderWidth = imgSlider.offsetWidth;
     imgSliderTotalWidth = imgSliderWidth * (imgSlider.children.length - 1);
-    console.log(imgSliderTotalWidth);
+    // console.log(imgSliderTotalWidth);
   })
 
   imgSlider.scrollTo((imgSliderWidth *3), 0);
@@ -218,8 +218,8 @@ const imgTop7 = document.querySelectorAll('.img-top-7');
 // imgTop4.style.filter = 'bright(0.5)';
 
 const allSlider = document.querySelectorAll('.mat-val-range');
-console.log(imgTop4.dataset);
-console.log(allSlider);
+// console.log(imgTop4.dataset);
+// console.log(allSlider);
 allSlider.forEach(slider => {
   slider.addEventListener('input', () => {
 
@@ -248,7 +248,7 @@ allSlider.forEach(slider => {
     }
 
     if(slider.classList[1] == 'mat-prop-gloss-roughness') {
-      console.log(slider.value);
+      // console.log(slider.value);
       if(slider.value < 50){
         imgTop7.forEach(image => image.style.filter = "opacity("+((50 - slider.value) * 2) / 100+")");
         imgTop6.forEach(image => image.style.filter = "opacity(0)");
@@ -300,7 +300,7 @@ descTexts[tutorialNum].style.display = "block";
 
 scrollTutorial();
 function scrollTutorial(){
-  console.log(descTexts.length);
+  // console.log(descTexts.length);
   lArrow.style.opacity = "0.3";
 
 
